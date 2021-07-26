@@ -24,8 +24,25 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UserLogin'
+          application/xml:
+            schema:
+              type: object
+              properties:
+                '':
+                  type: string
         required: true
+        description: ''
       responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+              examples:
+                example-1:
+                  value:
+                    access_token: string
         '400':
           description: Incorrect username or password
       operationId: get token
@@ -44,6 +61,18 @@ components:
         password:
           title: Password
           type: string
+    Token:
+      description: ''
+      type: object
+      properties:
+        access_token:
+          type: string
+          minLength: 1
+      required:
+        - access_token
+      x-examples:
+        example-1:
+          access_token: token
   securitySchemes:
     bearerAuth:
       type: http
