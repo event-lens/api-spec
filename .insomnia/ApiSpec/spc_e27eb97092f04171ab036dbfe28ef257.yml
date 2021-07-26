@@ -1,0 +1,32 @@
+_id: spc_e27eb97092f04171ab036dbfe28ef257
+type: ApiSpec
+parentId: wrk_068c2dde71d54f52991151912abbd441
+modified: 1627330777541
+created: 1627316337935
+fileName: event-lens-api-spec.yaml
+contents: "openapi: 3.0.0
+
+  info:
+
+  \  title: Event Lens API
+
+  \  description: API spec for EventLens
+
+  \  version: 0.0.1
+
+  servers:
+
+  \  - url: http://localhost:4000
+
+  \    description: Local development API
+
+  \  - url: https://api.eventlens.com.mx
+
+  \    description: Official API
+
+  \  - url: https://api.staging.eventlens.com.mx
+
+  \    description: Development API
+
+  \  "
+contentType: yaml
