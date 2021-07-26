@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  title: Event Lens API
+  description: API spec for EventLens
+  version: 0.0.1
+servers:
+  - url: 'http://localhost:4000'
+    description: Local development API
+  - url: 'https://api.eventlens.com.mx'
+    description: Official API
+  - url: 'https://api.staging.eventlens.com.mx'
+    description: Development API
+paths:
+  /users/login:
+    post:
+      tags:
+        - auth
+      summary: Login and get access token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+        required: true
+      responses:
+        '400':
+          description: Incorrect username or password
+components:
+  schemas:
+    UserLogin:
+      title: UserLogin
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          title: Email
+          type: string
+        password:
+          title: Password
+          type: string
+  securitySchemes:
+    API Key - 1:
+      name: API Key
+      type: apiKey
+      in: header
+      description: ''
