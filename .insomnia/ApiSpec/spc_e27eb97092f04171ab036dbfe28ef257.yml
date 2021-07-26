@@ -1,32 +1,50 @@
 _id: spc_e27eb97092f04171ab036dbfe28ef257
 type: ApiSpec
 parentId: wrk_068c2dde71d54f52991151912abbd441
-modified: 1627330777541
+modified: 1627332073608
 created: 1627316337935
 fileName: event-lens-api-spec.yaml
-contents: "openapi: 3.0.0
-
+contents: |-
+  openapi: 3.0.0
   info:
-
-  \  title: Event Lens API
-
-  \  description: API spec for EventLens
-
-  \  version: 0.0.1
-
+    title: Event Lens API
+    description: API spec for EventLens
+    version: 0.0.1
   servers:
-
-  \  - url: http://localhost:4000
-
-  \    description: Local development API
-
-  \  - url: https://api.eventlens.com.mx
-
-  \    description: Official API
-
-  \  - url: https://api.staging.eventlens.com.mx
-
-  \    description: Development API
-
-  \  "
+    - url: http://localhost:4000
+      description: Local development API
+    - url: https://api.eventlens.com.mx
+      description: Official API
+    - url: https://api.staging.eventlens.com.mx
+      description: Development API
+  paths:
+    /users/login:
+      post:
+        tags:
+          - auth
+        summary: Login and get access token
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLogin'
+          required: true
+        responses:
+          '400':
+             description: Incorrect username or password
+  components:
+    schemas:
+      UserLogin:
+        title: UserLogin
+        required:
+          - email
+          - password
+        type: object
+        properties:
+          email:
+            title: Email
+            type: string
+          password:
+            title: Password
+            type: string
 contentType: yaml
